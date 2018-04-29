@@ -24,3 +24,13 @@ Tried to docker-compose down and noticed that there was still a container bound 
 Did a docker rm -f <name of container> and that seems to have deleted it.
 
 Doing docker-compose commands in powershell alongside visual studio seems to confuse things.
+
+
+Changing the base image broke debugging. I'm going to have to be very carefule how I proceed.
+
+
+I want to do something like this:
+  cibuilder:
+    build:
+      context: .
+      dockerfile: 
