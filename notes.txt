@@ -1,0 +1,26 @@
+Problem:
+Ran into a problem where the docker pull command timedout.
+
+Solution:
+Restarted docker for windows.
+
+Problem:
+The ports I used in my docker-compose seem to not get deallocated:
+
+Removing dockerwebapiexample_dockerwebapiexample_1
+Recreating ce4f01873d4c_dockerwebapiexample_dockerwebapiexample_1 ... error
+
+ERROR: for ce4f01873d4c_dockerwebapiexample_dockerwebapiexample_1  Cannot start service dockerwebapiexample: driver fail
+ed programming external connectivity on endpoint dockerwebapiexample_dockerwebapiexample_1 (76f6d2722baa569a7c34b9b257c0
+8a6cb5ca4d7ed46a696f14d6df833c3a3736): Bind for 0.0.0.0:8080 failed: port is already allocated
+
+ERROR: for dockerwebapiexample  Cannot start service dockerwebapiexample: driver failed programming external connectivit
+y on endpoint dockerwebapiexample_dockerwebapiexample_1 (76f6d2722baa569a7c34b9b257c08a6cb5ca4d7ed46a696f14d6df833c3a373
+6): Bind for 0.0.0.0:8080 failed: port is already allocated
+ERROR: Encountered errors while bringing up the project.
+
+Solution:
+Tried to docker-compose down and noticed that there was still a container bound to 80.
+Did a docker rm -f <name of container> and that seems to have deleted it.
+
+Doing docker-compose commands in powershell alongside visual studio seems to confuse things.
